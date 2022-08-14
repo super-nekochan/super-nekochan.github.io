@@ -4,7 +4,7 @@ description: '住所変換サービスなど様々なWEBサービスを提供し
 permalink: ':title:output_ext'
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://super-nekochan.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
-logo: "/assets/img/branding/MVM-logo-full.svg"
+logo: "/assets/img/branding/super-nekochan-logo.png"
 logo-icon: "/assets/img/branding/MVM-symbol.svg"
 logo-icon-SEO: "/assets/img/branding/MVM-symbol-black.png" # must be a non SVG file
 
