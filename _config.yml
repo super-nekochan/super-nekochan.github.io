@@ -46,7 +46,7 @@ analytics: #入力例：G-R8SZS2YBZK
 fbadmin: #入力例：ar.maybach
 
 # Paginate
-paginate: 2
+paginate: 1
 paginate_path: 'page:num'
 words_per_minute: 200
 
