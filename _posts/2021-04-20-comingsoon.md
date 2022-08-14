@@ -9,5 +9,6 @@ tags: [copyright]
 category: opinion
 author: Super Nekochan
 description: "コンテンツ開発中"
+enable: false
 ---
 開発中　-coming soon-

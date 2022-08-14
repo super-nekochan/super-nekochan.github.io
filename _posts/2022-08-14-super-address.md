@@ -9,6 +9,7 @@ tags: [copyright]
 category: opinion
 author: Super Nekochan
 description: "住所正規化サービス?"
+enable: true
 ---
 testページだおら [test](https://www.rollingstone.com/music/music-features/nirvana-kurt-cobain-ai-song-1146444/) 
 

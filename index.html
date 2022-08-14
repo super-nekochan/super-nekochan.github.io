@@ -8,8 +8,13 @@ layout: home-page
   {% include remove_double_slash.html %}
   <li>
     <div class="post-card">
-      <a href="{{ post_url }}" title="{{ post.title }}" class="post-card-image" style="background: url('{{ relativebase }}assets/img/{{ post.img }}') center no-repeat; background-size: cover;">
+      {% if post.enable %}
+        <a href="{{ post_url }}" title="{{ post.title }}" class="post-card-image" style="background: url('{{ relativebase }}assets/img/{{ post.img }}') center no-repeat; background-size: cover;">
       </a>
+      {% else %}
+      <a href="#" title="{{ post.title }}" class="post-card-image" style="background: url('{{ relativebase }}assets/img/{{ post.img }}') center no-repeat; background-size: cover;">
+      </a>
+      {% endif %}
       <div class="post-card-body">
         <p class="post-card-title-and-meta">
           
