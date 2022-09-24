@@ -12,7 +12,7 @@ description: "住所正規化サービス"
 enable: true
 ---
 住所入力欄
-<textarea id="input_address" placeholder="正規化したい住所を入力してください" ></textarea>
+<textarea class="input_address" placeholder="正規化したい住所を入力してください" ></textarea>
 
 
 
