@@ -13,7 +13,8 @@ enable: true
 ---
 住所入力欄
 <textarea class="input_address" placeholder="正規化したい住所を入力してください" ></textarea>
-
+CSVおよびエクセルファイルをアップロード
+<input class="input_address_file" type="file" accept=".csv,	.xlsx, .xls"></input>
 
 
 
