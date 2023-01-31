@@ -12,10 +12,6 @@ description: "住所正規化サービス"
 enable: true
 ---
 <body>
-  <header>
-    <h1>Super-address</h1>
-  </header>
-
   <div class="container">
     <div class="form">
       <h2>住所正規化</h2>

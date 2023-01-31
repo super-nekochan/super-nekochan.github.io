@@ -1696,6 +1696,25 @@ img + small, img + br + small {
   background-color: var(--accent);
   color: white;
 }
+/*div .container h2 {
+}*/
+textarea .input_address{
+  resize: vertical;
+  width:580px;
+  height:200px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+textarea .output_address{
+  resize: vertical;
+  width:580px;
+  height:200px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+
 /* = = = = = = = = = = Author Box = = = = = = = = = = */
 .author-box {
   display: -webkit-box;
