@@ -12,7 +12,7 @@ description: "住所正規化サービス"
 enable: true
 ---
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="js/super_address.js"></script>
+<script src="super_address.js"></script>
 <body>
   <div class="container">
     <div class="form">
@@ -69,7 +69,11 @@ async function get_result_func(q_id,input_quantity){
 }
 </script>
 
+<!-- 
+2023/1/31 
+jsのファイルの配置位置を確認すること。
 
+-->
 <!--
 <tweet>tweetタグのテスト</tweet> 
 testページ [test](https://www.rollingstone.com/music/music-features/nirvana-kurt-cobain-ai-song-1146444/) 
