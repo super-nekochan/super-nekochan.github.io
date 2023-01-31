@@ -1698,14 +1698,14 @@ img + small, img + br + small {
 }
 /*div .container h2 {
 }*/
-textarea .input_address{
+div .form textarea .input_address{
   resize: vertical;
   width:580px;
   height:200px;
   margin-left: 10px;
   margin-right: 10px;
 }
-textarea .output_address{
+div .form textarea .output_address{
   resize: vertical;
   width:580px;
   height:200px;
