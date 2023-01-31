@@ -2,6 +2,20 @@
 @charset "utf-8";
 /* Main Color palette and fonts */
 
+textarea #address_input .input_address{
+  resize: vertical;
+  width:580px;
+  height:200px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+textarea #output_input .output_address{
+  resize: vertical;
+  width:580px;
+  height:200px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
 html {
   --accent:       #DB504A;    /* accent     */
   --accent-dark:  #4e3e51;    /* accent 2   */
@@ -1698,20 +1712,7 @@ img + small, img + br + small {
 }
 /*div .container h2 {
 }*/
-textarea #address_input .input_address{
-  resize: vertical;
-  width:580px;
-  height:200px;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-textarea #output_input .output_address{
-  resize: vertical;
-  width:580px;
-  height:200px;
-  margin-left: 10px;
-  margin-right: 10px;
-}
+
 
 
 

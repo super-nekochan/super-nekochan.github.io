@@ -11,6 +11,8 @@ author: Super Nekochan
 description: "住所正規化サービス"
 enable: true
 ---
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="js/super_address.js"></script>
 <body>
   <div class="container">
     <div class="form">
@@ -25,9 +27,47 @@ enable: true
       </div>
     </div>
 
-
 </body>
-
+<script>
+  async function buttonClick(){    
+  const address_1 = document.getElementById('address_input').value;
+  const address_split = address_1.split(/\n/);
+  let address_keyvalue = new Array(address_split.length);
+  for(let address_num = 0; address_num<address_split.length; address_num++){
+    address_keyvalue[address_num] = {address:address_split[address_num]};
+  }
+  let input_quantity = address_keyvalue.length;
+  console.log("入力数"+input_quantity);
+  // 住所正規化APIを実行
+  let result_string = await super_address.post_address(address_keyvalue); 
+  const ret_dict = JSON.parse(result_string);
+  let q_id = ret_dict["result"];
+  setTimeout(await get_result_func(q_id,input_quantity),10000);
+async function get_result_func(q_id,input_quantity){
+  const results_output = await super_address.get_results(q_id);
+  console.log(results_output);
+  const results_parse=JSON.parse(results_output);
+  let status_num = results_parse["status"];
+  let status_message = results_parse["message"];
+  switch(status_num){
+    case 0:
+      document.getElementById("output_input").value="";
+      for(let i = 0; i<=input_quantity-1;i++ ){
+        const results_view = results_parse["results"][i]["address"]; 
+        document.getElementById("output_input").value += results_view +"\n";
+      }
+      break;
+    case 1:
+      document.getElementById("output_input").value = "状態コード:"+status_num +"\n"+"現在処理中"
+      setTimeout(await get_result_func(q_id,input_quantity),10000);
+      break;
+    default:
+      document.getElementById("output_input").value = "状態コード:"+status_num +"\n"+status_message;
+      break;
+    }
+  }
+}
+</script>
 
 
 <!--
