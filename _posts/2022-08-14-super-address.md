@@ -11,11 +11,26 @@ author: Super Nekochan
 description: "住所正規化サービス"
 enable: true
 ---
-住所入力欄
-<textarea class="input_address" placeholder="正規化したい住所を入力してください" ></textarea>
-CSVおよびエクセルファイルをアップロード
-<input class="input_address_file" type="file" accept=".csv,	.xlsx, .xls">
+<body>
+  <header>
+    <h1>Super-address</h1>
+  </header>
 
+  <div class="container">
+    <div class="form">
+      <h1>住所正規化</h1>
+        <textarea class="input_address" id="address_input" placeholder="正規化したい住所を入力してください(5箇所以上はcsv,xlsx,xlsファイルをアップロードしてください)" ></textarea>
+        <textarea readonly class="output_address" id="output_input" placeholder="出力欄" ></textarea>
+      <h1 class="margin_text">CSVおよびエクセルファイルをアップロード</h1>
+        <input class="input_address_file" type="file" accept=".csv,	.xlsx, .xls">
+      <br>
+      <br>
+      <button class="button" type="button" onclick="buttonClick()">実行</button>
+      </div>
+    </div>
+  </div>
+
+</body>
 
 
 
