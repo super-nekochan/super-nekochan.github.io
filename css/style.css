@@ -1,0 +1,85 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgba(26, 55, 229, 0.06);
+}
+.container{
+    justify-content: space-around;
+    max-width: 1220px;
+    margin: 0 auto;
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+}
+img{
+    width:100%;
+    margin: 0;
+    vertical-align: top;
+
+}
+header{
+    background-color: #007acc;
+    color:#fff;
+    width: 100%;
+    position: fixed; /*要素固定のためのおまじない*/
+    top: 0;
+    z-index: 100; /*ヘッダーを一番上に出すための数値*/
+
+
+}
+header h1{
+    margin: 0;
+    font-size: 25px;
+    padding: 5px;
+    text-align: center;
+    font-family: "M PLUS 1p"; 
+}
+
+.photo{
+    position: relative; /*親要素*/
+
+}
+.photo .inner{
+    position: absolute; /*子要素 これ以下は親要素に対する数値になる*/
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    font-size: 10px;
+    color:#fff;
+    margin: 0;
+    width: 100%;
+
+}
+.inner p{
+    padding: 20px;
+}
+.inner span{
+    margin-left: 10px;
+}
+.container .form{
+    margin-top: 60px;
+}
+.input_address{
+    resize: vertical;
+    width:580px;
+    height:200px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.output_address{
+    resize: vertical;
+    width:580px;
+    height:200px;
+    margin-left: 10px;
+    margin-right:10px
+}
+.button{
+    margin-left: 10px;
+    text-align: center;
+    font-family: "M PLUS 1p";
+}
+.form h1{
+    font-family: "M PLUS 1p";
+    margin-left: 10px;
+}
+
+.input_address_file{
+    margin-left: 10px;
+}

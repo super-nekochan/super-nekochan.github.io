@@ -1,30 +1,109 @@
----
-layout: home-page
----
-{% include calculate_relative_base.html %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="js/super_address.js"></script> <!--- 自作 javascript -->
+  <title>Super-address</title>
+</head>
 
-<ol class="post-card-box clearfix">
-  {% for post in paginator.posts %}
-  {% include remove_double_slash.html %}
-  <li>
-    <div class="post-card">
-      {% if post.enable %}
-        <a href="{{ post_url }}" title="{{ post.title }}" class="post-card-image" style="background: url('{{ relativebase }}assets/img/{{ post.img }}') center no-repeat; background-size: cover;">
-      </a>
-      {% else %}
-      <a href="#" title="{{ post.title }}" class="post-card-image" style="background: url('{{ relativebase }}assets/img/{{ post.img }}') center no-repeat; background-size: cover;">
-      </a>
-      {% endif %}
-      <div class="post-card-body">
-        <p class="post-card-title-and-meta">
-          
-          <a href="{{ post_url }}" class="post-card-link">
-          {{ post.title }}
-          </a>
-          {% include post_meta.html type="post-card-meta" date="none" %}
-        </p>
+<script>
+
+  async function buttonClick(){
+    const address_1 = document.getElementById('address_input').value;
+    const address_split = address_1.split(/\n/);
+    // 入力された住所をjson形式に変換
+    let address_keyvalue = new Array(address_split.length);
+    for(let address_num = 0; address_num<address_split.length; address_num++){
+    address_keyvalue[address_num] = {address:address_split[address_num]};
+      }
+    let input_quantity = address_keyvalue.length;
+    console.log("入力数"+input_quantity);
+  
+  
+  // 住所正規化APIを実行
+  
+  
+    let result_string = await super_address.post_address(address_keyvalue); 
+    const ret_dict = JSON.parse(result_string);
+  
+    let q_id = ret_dict["result"];
+    setTimeout(await get_result_func(q_id,input_quantity),10000); //関数実行の10秒待ち,これが初回動画広告相当
+  }
+
+  async function get_result_func(q_id,input_quantity){
+      const results_output = await super_address.get_results(q_id);
+      console.log(results_output);
+      const results_parse=JSON.parse(results_output);
+      let status_num = results_parse["status"];
+      let status_message = results_parse["message"];
+      switch(status_num){
+        case 0:
+        document.getElementById("output_input").value="";
+        for(let i = 0; i<=input_quantity-1;i++ ){
+        const results_view = results_parse["results"][i]["address"]; // ネスト構造の配列の呼び出し
+        document.getElementById("output_input").value += results_view +"\n";
+        }
+        break;
+        case 1:
+        document.getElementById("output_input").value = "状態コード:"+status_num +"\n"+"現在処理中"
+        setTimeout(await get_result_func(q_id,input_quantity),10000);//関数実行の10秒待ち,これが2回目以降の動画広告相当
+        break;
+        default:
+        document.getElementById("output_input").value = "状態コード:"+status_num +"\n"+status_message;
+        break;
+      }
+    }
+  
+// DO 2023/3/4
+// ぶっ壊してしまったので直した1/31に戻してなおした。
+// TODO 2023/3/4 ～
+// ファイルから住所データの受け取りやってみますか？
+    
+// TODO 2023/1/31
+// setTimeout関数適用 複数行出力適用済み
+// status_num 1 timeout error である限りはスリープをはさみつつ、getを繰り返す機能を実装させる。　適用済み
+// また、返ってきたaddress を全件表示できるように実装する。適用済み
+
+// TODO 2023/1/24
+// setTimeout関数適用 複数行出力適用
+// status_num 1 timeout error である限りはスリープをはさみつつ、getを繰り返す機能を実装させる。
+// また、返ってきたaddress を全件表示できるように実装する。
+
+// TODO 2023/1/17 
+// status_num 1 timeout error である限りはスリープをはさみつつ、getを繰り返す機能を実装させる。
+// また、返ってきたaddress を全件表示できるように実装する。
+
+// TODO 2023/1/9
+//  address_submit クエリid がJSON化するのでそれに対応すること →完
+//  get_results JSONが多項目化するので、項目指定して取得表示および
+//  status 状態により分岐するように処理を作成する。
+
+</script>
+</head>
+<body>
+  <header>
+    <h1>Super-address</h1>
+  </header>
+
+  <div class="container">
+    <div class="form">
+      <h1>住所正規化</h1>
+        <textarea class="input_address" id="address_input" placeholder="正規化したい住所を入力してください(5箇所以上はcsv,xlsx,xlsファイルをアップロードしてください)" ></textarea>
+        <textarea readonly class="output_address" id="output_input" placeholder="出力欄" ></textarea>
+        <button class="button" type="button" onclick="buttonClick()">実行</button>
+
+      <h1 class="margin_text">CSVおよびエクセルファイルをアップロード</h1>
+        <input class="input_address_file" type="file" accept=".csv,	.xlsx, .xls">
+      <br>
+      <br>
+      <button class="button" type="button" onclick="Click()">ファイルアップロード実行</button>
       </div>
     </div>
-  </li>
-  {% endfor %}
-</ol>
+  </div>
+
+</body>
+</html>
